@@ -143,7 +143,7 @@
 
 
 3. Download the mod:
-    * Official release can be downloaded from [Nexus Mods](https://nexusmods.com/residentevilvillage/mods/60);
+    * Official release can be downloaded from [Nexus Mods](https://www.nexusmods.com/residentevilvillage/mods/401);
     * Nightly builds are available in [this repo](https://github.com/GreenComfyTea/RE-Village-Health-Bars) and can contain broken functionality, debugging info on screen, bugs and might require the latest [nightly build](https://github.com/praydog/REFramework-nightly/releases) of [REFramework](https://nexusmods.com/residentevilvillage/mods/60). Use with caution!
 4. Extract the mod from the archive and copy it into Resident Evil Village folder. Final path should look like this: `/Resident Evil Village BIOHAZARD VILLAGE/reframework/`  
 
