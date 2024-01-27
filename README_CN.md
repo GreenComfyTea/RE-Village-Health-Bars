@@ -143,7 +143,7 @@
    
 
 3. 下载这些mod:
-    * 官方所发布的下载地址是 [Nexus Mods](https://nexusmods.com/residentevil42023/mods/84);
+    * 官方所发布的下载地址是 [Nexus Mods](https://www.nexusmods.com/residentevilvillage/mods/401);
     * 每晚构建版本可以在[此存储库](https://github.com/GreenComfyTea/RE-Village-Health-Bars)中获取，可能包含错误功能、屏幕上的调试信息、错误和可能需要最新的[每晚构建版本](https://github.com/praydog/REFramework-nightly/releases)的[REFramework](https://nexusmods.com/residentevilvillage/mods/60)。请谨慎使用！  
 4. 从压缩包中解压mod文件(解压的后你应该得到**reframework**文件夹)，并将其复制进**RESIDENT EVIL 4 BIOHAZARD RE4**游戏根目录中。最终路径应该如下所示：`/Resident Evil Village BIOHAZARD VILLAGE/reframework/`。
    > reframework文件夹目录下应该有 `autorun`,`data`,`font` 这三个文件夹。
@@ -156,7 +156,7 @@
   
 **编译命令示例:(注意：将"lua54.exe”、“amalg.lua”和“Health_Bars.lua"的路径替换为您的路径):**  
 
-`"D:\Programs\Lua Amalg\lua54.exe" "D:\Programs\Lua Amalg\amalg.lua" -o Health_Bars_precompiled.lua -d -s "E:\GitHub\RE4-Health-Bars\reframework\autorun\Health_Bars.lua" Health_Bars.bar_customization Health_Bars.config Health_Bars.customization_menu Health_Bars.drawing Health_Bars.enemy_handler Health_Bars.game_handler Health_Bars.label_customization Health_Bars.player_handler Health_Bars.screen Health_Bars.singletons Health_Bars.time Health_Bars.utils Health_Bars.language`
+`"D:\Programs\Lua Amalg\lua54.exe" "D:\Programs\Lua Amalg\amalg.lua" -o Health_Bars_precompiled.lua -d -s "E:\GitHub\RE-Village-Health-Bars\reframework\autorun\Health_Bars.lua" Health_Bars.bar_customization Health_Bars.config Health_Bars.customization_menu Health_Bars.drawing Health_Bars.enemy_handler Health_Bars.game_handler Health_Bars.label_customization Health_Bars.player_handler Health_Bars.screen Health_Bars.singletons Health_Bars.time Health_Bars.utils Health_Bars.language`
   
 # 贡献者名单  
 + **GreenComfyTea** - 模组的创建者及其主要贡献者。  
