@@ -466,9 +466,9 @@ function this.update_is_filtered_out(enemy)
 		   (cached_config.hide_leonardo and enemy.is_leonardo)
 		or (cached_config.hide_duke and enemy.is_duke)
 		or (cached_config.hide_blue_bird and enemy.is_blue_bird)
-		or (cached_config.hide_pigs and enemy.is_pigs)
-		or (cached_config.hide_chickens and enemy.is_chickens)
-		or (cached_config.hide_goats and enemy.is_goats)
+		or (cached_config.hide_pigs and enemy.is_pig)
+		or (cached_config.hide_chickens and enemy.is_chicken)
+		or (cached_config.hide_goats and enemy.is_goat)
 		or (cached_config.hide_fish and enemy.is_fish)
 		or (cached_config.hide_catfish and enemy.is_catfish)
 		or (cached_config.hide_rose_copies and enemy.is_rose_copies)
@@ -536,6 +536,8 @@ function this.update_position(enemy)
 end
 
 function this.update_all_periodics()
+	
+
 	for enemy_core, enemy in pairs(this.enemy_list) do
 		if config.current_config.settings.hide_if_no_update_function_is_being_called and time.total_elapsed_script_seconds - enemy.last_update_time > this.update_time_limit then
 			this.enemy_list[enemy_core] = nil;
@@ -554,6 +556,8 @@ function this.update_all_periodics()
 		this.update_scale(enemy);
 
 		enemy.actual_height = enemy.height * enemy.scale;
+
+		log.debug(string.format("%s %s", enemy.type, tostring(enemy.is_pig)));
 
 		::continue::
 	end
