@@ -54,7 +54,7 @@ function this.init()
 
 			size = {
 				width = 650,
-				height = 700
+				height = 480
 			},
 
 			pivot = {
