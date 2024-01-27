@@ -45,6 +45,7 @@ local on_pause_method = content_timer_type_def:get_method("onPause");
 local event_system_app_type_def = sdk.find_type_definition("app.EventSystemApp");
 local is_running_event_method = event_system_app_type_def:get_method("isRunningEvent(System.Boolean)");
 
+local pause_off_timer = nil;
 local cutscene_off_timer = nil;
 
 function this.update_is_cutscene()
@@ -113,8 +114,17 @@ function this.on_pause(is_paused_int)
 		return;
 	end
 
+	if pause_off_timer ~= nil then
+		return;
+	end
+
+	if not this.game.is_paused then
+		return;
+	end
+
 	time.new_delay_timer(function()
 		this.game.is_paused = false;
+		pause_off_timer = nil;
 	end,
 	1.2 * enemy_handler.update_time_limit);
 end
