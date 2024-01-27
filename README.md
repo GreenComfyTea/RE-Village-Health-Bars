@@ -121,7 +121,7 @@
 
 <p align="center">
 	<a>
-		<img align="center" src="https://user-images.githubusercontent.com/30152047/226180919-2ddaacc2-f8c7-4688-8ec0-1958da87f91a.png" />
+		<img align="center" src="https://github.com/GreenComfyTea/RE-Village-Health-Bars/assets/30152047/fa554294-08cb-44e8-9367-4e4a209182a8" />
 	</a>
 </p>
 
