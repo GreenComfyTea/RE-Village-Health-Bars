@@ -133,13 +133,13 @@
 2. [REFramework Direct2D](https://www.nexusmods.com/residentevilvillage/mods/400) (v0.4.0+).
 
 # How to install:
-1. Install [REFramework](https://www.nexusmods.com/residentevil42023/mods/12);
-2. Install [REFramework Direct2D](https://www.nexusmods.com/residentevil42023/mods/83);
+1. Install [REFramework](https://www.nexusmods.com/residentevilvillage/mods/60);
+2. Install [REFramework Direct2D](https://www.nexusmods.com/residentevilvillage/mods/400);
 >**:pushpin: Windows:** Works normally.
 
 >**:pushpin: Linux:** Latest Experimental Proton seems to have it working normally as well (https://github.com/cursey/reframework-d2d/issues/5).
 
->**:pushpin: Steam Deck:** I've seen people getting it working but I don't have the exact instructions. You will have to figure it out yourself and/or search the nexus pages for information ([REFramework](https://www.nexusmods.com/monsterhunterrise/mods/26?tab=description), [REFramework Direct2D](https://www.nexusmods.com/monsterhunterrise/mods/134)).
+>**:pushpin: Steam Deck:** I've seen people getting it working but I don't have the exact instructions. You will have to figure it out yourself and/or search the nexus pages for information ([REFramework](https://www.nexusmods.com/residentevilvillage/mods/60), [REFramework Direct2D](https://www.nexusmods.com/monsterhunterrise/mods/134)).
 
 
 3. Download the mod:
@@ -156,7 +156,7 @@
 
 **Example compilation command (replace the paths to `lua54.exe`, `amalg.lua` and `Health_Bars.lua` to yours):**
 
-`"D:\Programs\Lua Amalg\lua54.exe" amalg.lua -o Health_Bars_precompiled.lua -d -s "E:\GitHub\RE-Village-Health-Bars\reframework\autorun\Health_Bars.lua" Health_Bars.bar_customization Health_Bars.config Health_Bars.customization_menu Health_Bars.drawing Health_Bars.enemy_handler Health_Bars.game_handler Health_Bars.label_customization Health_Bars.player_handler Health_Bars.screen Health_Bars.singletons Health_Bars.time Health_Bars.utils Health_Bars.language`
+`"D:\Programs\Lua Amalg\lua54.exe" "D:\Programs\Lua Amalg\amalg.lua" -o Health_Bars_precompiled.lua -d -s "E:\GitHub\RE-Village-Health-Bars\reframework\autorun\Health_Bars.lua" Health_Bars.bar_customization Health_Bars.config Health_Bars.customization_menu Health_Bars.drawing Health_Bars.enemy_handler Health_Bars.game_handler Health_Bars.label_customization Health_Bars.player_handler Health_Bars.screen Health_Bars.singletons Health_Bars.time Health_Bars.utils Health_Bars.language`
 
 # Credits
 + **GreenComfyTea** - creator of the mod and it's main contributor.   
