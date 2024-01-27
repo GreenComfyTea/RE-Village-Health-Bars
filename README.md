@@ -39,10 +39,10 @@
 		<img alt="Maintenance" src="https://custom-icon-badges.demolab.com/maintenance/yes/2023?logo=tools" />
 	</a>
 	<br>
-	<a href="https://www.nexusmods.com/residentevil42023/mods/12">
-		<img alt="REFramework Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20v1.460%2B-green?logo=package-dependencies" />
+	<a href="https://www.nexusmods.com/residentevilvillage/mods/60">
+		<img alt="REFramework Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20v1.470%2B-green?logo=package-dependencies" />
 	</a>
-   	<a href="https://www.nexusmods.com/residentevil42023/mods/83">
+   	<a href="https://www.nexusmods.com/residentevilvillage/mods/400">
 		<img alt="In-Game Menu Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20Direct2D%20v0.4.0%2B-yellow?logo=package-dependencies" />
 	</a>
 		<br>
