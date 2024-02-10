@@ -77,7 +77,6 @@ re.on_pre_application_entry("UpdateBehavior", function()
 	end
 
 	time.update_timers();
-
 end);
 
 local function main_loop()

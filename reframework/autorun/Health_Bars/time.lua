@@ -56,7 +56,7 @@ function this.new_timer(callback, cooldown_seconds, start_offset_seconds)
 	local timer = {};
 	timer.callback = callback;
 	timer.cooldown = cooldown_seconds;
-	
+
 	timer.last_trigger_time = os.clock() + start_offset_seconds;
 
 	this.timer_list[callback] =  timer;
