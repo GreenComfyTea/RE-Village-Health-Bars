@@ -734,10 +734,17 @@ function this.update_head_position_dimitrescu_boss(enemy)
 		return false;
 	end
 
-	end_joint.y = end_joint.y + 0.3 * enemy.actual_height;
+	local end_joint_position = joint_get_position_method:call(end_joint);
 
-	enemy.head_position = end_joint;
-	enemy.head_distance = (player_handler.player.position - end_joint):length();
+	if end_joint_position == nil then
+		customization_menu.status = "[enemy.update_head_position_from_spine] No End Joint Position";
+		return false;
+	end
+
+	end_joint_position.y = end_joint_position.y + 0.3 * enemy.actual_height;
+
+	enemy.head_position = end_joint_position;
+	enemy.head_distance = (player_handler.player.position - end_joint_position):length();
 
 	return true;
 end
