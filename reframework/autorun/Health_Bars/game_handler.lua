@@ -38,15 +38,16 @@ local os = os;
 this.game = {};
 this.game.is_cutscene_playing = false;
 this.game.is_paused = false;
+this.game.is_mercenaries = false;
+
+local pause_off_timer = nil;
+local cutscene_off_timer = nil;
 
 local content_timer_type_def = sdk.find_type_definition("app.ContentTimer");
 local on_pause_method = content_timer_type_def:get_method("onPause");
 
 local event_system_app_type_def = sdk.find_type_definition("app.EventSystemApp");
 local is_running_event_method = event_system_app_type_def:get_method("isRunningEvent(System.Boolean)");
-
-local pause_off_timer = nil;
-local cutscene_off_timer = nil;
 
 function this.update_is_cutscene()
 	local event_system_app = singletons.event_system_app;
@@ -71,20 +72,28 @@ function this.update_is_cutscene()
 
 	local is_cutscene_playing = is_player_event_playing or is_event_playing;
 
+	-- Cutscene
 	if is_cutscene_playing then
 		this.game.is_cutscene_playing = true;
-		time.remove_delay_timer(cutscene_off_timer);
+		time.remove_delay_timer(pause_off_timer);
+		pause_off_timer = nil;
 		return;
 	end
 
+	-- Game No Cutscene, State No Cutscene
+	if not this.game.is_cutscene_playing then
+		time.remove_delay_timer(cutscene_off_timer);
+		cutscene_off_timer = nil;
+		return;
+	end
+
+	-- Game No Cutscene, State Cutscene, Timer is On
 	if cutscene_off_timer ~= nil then
 		return;
 	end
 
-	if not this.game.is_cutscene_playing then
-		return;
-	end
 
+	-- Game No Cutscene, State Cutscene, Timer is Off
 	cutscene_off_timer = time.new_delay_timer(function()
 		this.game.is_cutscene_playing = false;
 		cutscene_off_timer = nil;
@@ -109,20 +118,28 @@ function this.on_pause(is_paused_int)
 
 	local is_paused = (is_paused_int & 1) == 1;
 
+	-- Pause
 	if is_paused then
 		this.game.is_paused = true;
+		time.remove_delay_timer(pause_off_timer);
+		pause_off_timer = nil;
 		return;
 	end
 
+	-- Game No Pause, State No Pause
+	if not this.game.is_paused then
+		time.remove_delay_timer(pause_off_timer);
+		pause_off_timer = nil;
+		return;
+	end
+
+	-- Game No Pause, State Pause, Timer is On
 	if pause_off_timer ~= nil then
 		return;
 	end
 
-	if not this.game.is_paused then
-		return;
-	end
-
-	time.new_delay_timer(function()
+	-- Game No Pause, State Pause, Timer is Off
+	pause_off_timer = time.new_delay_timer(function()
 		this.game.is_paused = false;
 		pause_off_timer = nil;
 	end,
