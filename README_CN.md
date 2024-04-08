@@ -145,7 +145,7 @@
 3. 下载这些mod:
     * 官方所发布的下载地址是 [Nexus Mods](https://www.nexusmods.com/residentevilvillage/mods/401);
     * 每晚构建版本可以在[此存储库](https://github.com/GreenComfyTea/RE-Village-Health-Bars)中获取，可能包含错误功能、屏幕上的调试信息、错误和可能需要最新的[每晚构建版本](https://github.com/praydog/REFramework-nightly/releases)的[REFramework](https://nexusmods.com/residentevilvillage/mods/60)。请谨慎使用！  
-4. 从压缩包中解压mod文件(解压的后你应该得到**reframework**文件夹)，并将其复制进**RESIDENT EVIL 4 BIOHAZARD RE4**游戏根目录中。最终路径应该如下所示：`/Resident Evil Village BIOHAZARD VILLAGE/reframework/`。
+4. 从压缩包中解压mod文件(解压的后你应该得到**reframework**文件夹)，并将其复制进**RESIDENT EVIL VILLAGE BIOHAZARD VILLAGE**游戏根目录中。最终路径应该如下所示：`/Resident Evil Village BIOHAZARD VILLAGE/reframework/`。
    > reframework文件夹目录下应该有 `autorun`,`data`,`font` 这三个文件夹。
   
 # 如何编译?
