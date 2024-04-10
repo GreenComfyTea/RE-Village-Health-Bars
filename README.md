@@ -43,7 +43,7 @@
 		<img alt="REFramework Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20v1.470%2B-green?logo=package-dependencies" />
 	</a>
    	<a href="https://nexusmods.com/residentevilvillage/mods/400">
-		<img alt="In-Game Menu Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20Direct2D%20v0.4.0%2B-yellow?logo=package-dependencies" />
+		<img alt="In-Game Menu Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20Direct2D%20v1.0.0%2B-yellow?logo=package-dependencies" />
 	</a>
 		<br>
 	<br>
@@ -130,7 +130,7 @@
 
 # Requirements
 1. [REFramework](https://nexusmods.com/residentevilvillage/mods/60) (v1.470+);
-2. [REFramework Direct2D](https://nexusmods.com/residentevilvillage/mods/400) (v0.4.0+).
+2. [REFramework Direct2D](https://nexusmods.com/residentevilvillage/mods/400) (v1.0.0+).
 
 # How to install:
 1. Install [REFramework](https://nexusmods.com/residentevilvillage/mods/60);
