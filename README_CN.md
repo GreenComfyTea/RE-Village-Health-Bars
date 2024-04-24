@@ -40,10 +40,10 @@
 	</a>
 	<br>
 	<a href="https://nexusmods.com/residentevilvillage/mods/60">
-		<img alt="REFramework Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20v1.470%2B-green?logo=package-dependencies" />
+		<img alt="REFramework Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20v1.5.4%2B-green?logo=package-dependencies" />
 	</a>
    	<a href="https://nexusmods.com/residentevilvillage/mods/400">
-		<img alt="In-Game Menu Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20Direct2D%20v0.4.0%2B-yellow?logo=package-dependencies" />
+		<img alt="In-Game Menu Dependency" src="https://custom-icon-badges.demolab.com/badge/dependency-REFramework%20Direct2D%20v1.0.1%2B-yellow?logo=package-dependencies" />
 	</a>
 	<br>
 	<br>
@@ -129,8 +129,8 @@
 * **[Nexus Mods](https://nexusmods.com/residentevilvillage/mods/401)**  
 
 # 模组前置需求  
-1. [REFramework](https://nexusmods.com/residentevilvillage/mods/60) (v1.470或者更高版本);
-2. [REFramework Direct2D](https://nexusmods.com/residentevilvillage/mods/400) (v0.4.0或者更高版本).
+1. [REFramework](https://nexusmods.com/residentevilvillage/mods/60) ([Nightly](https://github.com/praydog/REFramework-nightly/releases) v1.5.4或者更高版本);
+2. [REFramework Direct2D](https://nexusmods.com/residentevilvillage/mods/400) (v1.0.1或者更高版本).
 
 # 如何安装？:
 1. 先安装[REFramework](https://nexusmods.com/residentevilvillage/mods/60);
