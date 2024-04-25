@@ -121,7 +121,7 @@
 
 <p align="center">
 	<a>
-		<img align="center" src="https://user-images.githubusercontent.com/30152047/226180919-2ddaacc2-f8c7-4688-8ec0-1958da87f91a.png" />
+		<img align="center" src="https://github.com/GreenComfyTea/RE-Village-Health-Bars/assets/30152047/fa554294-08cb-44e8-9367-4e4a209182a8" />
 	</a>
 </p>
 
@@ -133,8 +133,8 @@
 2. **[REFramework Direct2D](https://nexusmods.com/residentevilvillage/mods/400)** (v1.0.1或者更高版本).
 
 # 如何安装？:
-1. 先安装 **[REFramework](https://github.com/praydog/REFramework-nightly/releases)**;
-2. 再安装 **[REFramework Direct2D](https://nexusmods.com/residentevilvillage/mods/400)**;
+1. 先安装[REFramework](https://github.com/praydog/REFramework-nightly/releases);
+2. 再安装 [REFramework Direct2D](https://nexusmods.com/residentevilvillage/mods/400);
 
 >**:pushpin: Windows:** 工作正常。  
   
