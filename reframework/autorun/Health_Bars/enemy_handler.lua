@@ -648,8 +648,6 @@ function this.draw_enemies()
 		
 		::continue::
 	end
-
-	error_handler.report("rrwjk", xy);
 end
 
 function this.on_update(enemy_core)

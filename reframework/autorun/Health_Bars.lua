@@ -86,15 +86,9 @@ local function main_loop()
 		return;
 	end
 
-	error_handler.report("game_timer", utils.table.tostring(game_handler.game));
-
-	error_handler.report("1", "1");
 	player_handler.update_position();
-	error_handler.report("2", "2");
 	enemy_handler.update_all_positions();
-	error_handler.report("3", "3");
 	enemy_handler.draw_enemies();
-	error_handler.report("4", "4");
 end
 
 -- #endregion
