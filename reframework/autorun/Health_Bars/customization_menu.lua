@@ -7,6 +7,7 @@ local label_customization;
 local bar_customization;
 local time;
 local enemy_handler;
+local error_handler;
 
 local sdk = sdk;
 local tostring = tostring;
@@ -37,8 +38,6 @@ local draw = draw;
 local Vector2f = Vector2f;
 local reframework = reframework;
 local os = os;
-
-this.status = "OK";
 
 this.font = nil;
 this.full_font_range = {0x1, 0xFFFF, 0};
@@ -149,9 +148,6 @@ function this.draw()
 		config.reset();
 		config_changed = true;
 	end
-
-	imgui.same_line();
-	imgui.text(cached_language.status ..": " .. tostring(this.status));
 
 	changed, cached_config.enabled = imgui.checkbox(cached_language.enabled, cached_config.enabled);
 	config_changed = config_changed or changed;
@@ -298,15 +294,13 @@ function this.draw()
 		end
 
 		imgui.new_line();
+		imgui.begin_rect()
 
 		changed, cached_config.settings.use_d2d_if_available = imgui.checkbox(cached_language.use_d2d_renderer_if_available,
 			cached_config.settings.use_d2d_if_available);
 		config_changed = config_changed or changed;
 
-		changed, cached_config.settings.add_enemy_height_to_world_offset_for_some_enemies = imgui.checkbox(cached_language.add_enemy_height_to_world_offset_for_some_enemies,
-			cached_config.settings.add_enemy_height_to_world_offset_for_some_enemies);
-		config_changed = config_changed or changed;
-
+		imgui.end_rect(5);
 		imgui.new_line();
 		imgui.begin_rect()
 
@@ -538,6 +532,9 @@ function this.draw()
 	
 	changed = bar_customization.draw(cached_language.health_bar, cached_config.health_bar);
 	config_changed = config_changed or changed;
+
+	changed = this.draw_debug();
+	config_changed = config_changed or changed;
 	
 	imgui.end_window();
 	imgui.pop_font();
@@ -569,6 +566,62 @@ function this.draw()
 	end
 end
 
+function this.draw_debug()
+	local cached_config = config.current_config.debug;
+
+	local changed = false;
+	local config_changed = false;
+
+	if imgui.tree_node(language.current_language.customization_menu.debug) then
+		
+		imgui.text_colored(string.format("%s:", language.current_language.customization_menu.current_time), 0xFFAAAA66);
+		imgui.same_line();
+		imgui.text(string.format("%.3fs", time.total_elapsed_script_seconds));
+
+		if error_handler.is_empty then
+			imgui.text(language.current_language.customization_menu.everything_seems_to_be_ok);
+		else
+			for error_key, error in pairs(error_handler.list) do
+
+				imgui.button(string.format("%.3fs", error.time));
+				imgui.same_line();
+				imgui.text_colored(error_key, 0xFFAA66AA);
+				imgui.same_line();
+				imgui.text(error.message);
+			end
+		end
+
+		if imgui.tree_node(language.current_language.customization_menu.history) then
+
+			changed, cached_config.history_size = imgui.drag_int(
+				language.current_language.customization_menu.history_size, cached_config.history_size, 1, 0, 1024);
+
+			config_changed = config_changed or changed;
+
+			if changed then
+				error_handler.history = {};
+			end
+
+			for index, error in pairs(error_handler.history) do
+				imgui.text_colored(index, 0xFF66AA66);
+				imgui.same_line();
+				imgui.button(string.format("%.3fs", error.time));
+				imgui.same_line();
+				imgui.text_colored(error.key, 0xFFAA66AA);
+				imgui.same_line();
+				imgui.text(error.message);
+			end
+
+
+			imgui.tree_pop();
+		end
+
+		imgui.tree_pop();
+	end
+
+	return config_changed;
+end
+
 function this.init_module()
 	utils = require("Health_Bars.utils");
 	config = require("Health_Bars.config");
@@ -577,6 +630,7 @@ function this.init_module()
 	bar_customization = require("Health_Bars.bar_customization");
 	time = require("Health_Bars.time");
 	enemy_handler = require("Health_Bars.enemy_handler");
+	error_handler = require("Health_Bars.error_handler");
 
 	this.init();
 	this.reload_font();

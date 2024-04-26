@@ -6,6 +6,7 @@ local config;
 local customization_menu;
 local enemy_handler;
 local time;
+local error_handler;
 
 local sdk = sdk;
 local tostring = tostring;
@@ -68,27 +69,26 @@ local game_object_field = cast_result_type_def:get_field("GameObject");
 
 function this.update_position()
 	if singletons.props_manager == nil then
-		customization_menu.status = "[player.update_position] No Props Manager";
+		error_handler.report("player.update_position", "No PropsManager");
 		return;
 	end
 
 	local player = get_player_method:call(singletons.props_manager);
-
 	if player == nil then
-		customization_menu.status = "[player.update_position] No Player";
+		error_handler.report("player.update_position", "No Player");
 		return;
 	end
 
 	local player_transform = get_transform_method:call(player);
 
 	if player_transform == nil then
-		customization_menu.status = "[player.update_position] No Player Transform";
+		error_handler.report("player.update_position", "No Transform");
 		return;
 	end
 
 	local position = get_position_method:call(player_transform);
 	if position == nil then
-		customization_menu.status = "[player.update_position] No Player Position";
+		error_handler.report("player.update_position", "No Position");
 		return;
 	end
 
@@ -101,7 +101,7 @@ function this.update_aim_target()
 	local enemy_manager = singletons.enemy_manager;
 
 	if enemy_manager == nil then
-		customization_menu.status = "[player.update_aim_target] No Enemy Manager";
+		error_handler.report("player.update_aim_target", "No EnemyManager");
 		return;
 	end
 
@@ -169,6 +169,7 @@ function this.init_module()
 	customization_menu = require("Health_Bars.customization_menu");
 	enemy_handler = require("Health_Bars.enemy_handler");
 	time = require("Health_Bars.time");
+	error_handler = require("Health_Bars.error_handler");
 
 	sdk.hook(on_aim_start_method, function(args)
 

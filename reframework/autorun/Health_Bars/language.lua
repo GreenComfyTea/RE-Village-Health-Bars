@@ -76,7 +76,6 @@ this.default_language = {
 
 		settings = "Settings",
 		use_d2d_renderer_if_available = "Use Direct2D Renderer if Available",
-		add_enemy_height_to_world_offset_for_some_enemies = "Add Enemy Height to World Offset for Some Enemies",
 
 		render_during_cutscenes = "Render during Cutscenes",
 		render_when_game_timer_is_paused = "Render when Game Timer is Paused",
@@ -171,7 +170,13 @@ this.default_language = {
 		update_window_size_delay = "Update Window Size (sec)",
 		update_game_data_delay = "Update Game Data (sec)",
 		update_player_data_delay = "Update Player Data (sec)",
-		update_enemy_data_delay = "Update Enemy Data (sec)"
+		update_enemy_data_delay = "Update Enemy Data (sec)",
+
+		debug = "Debug",
+		current_time = "Current Time",
+		everything_seems_to_be_ok = "Everything seems to be OK!",
+		history = "History",
+		history_size = "History Size",
 	}
 };
 

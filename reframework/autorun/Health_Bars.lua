@@ -35,6 +35,7 @@ local time = require("Health_Bars.time");
 local drawing = require("Health_Bars.drawing");
 local utils = require("Health_Bars.utils");
 local config = require("Health_Bars.config");
+local error_handler = require("Health_Bars.error_handler");
 local language = require("Health_Bars.language");
 local screen = require("Health_Bars.screen");
 local singletons = require("Health_Bars.singletons");
@@ -54,6 +55,7 @@ drawing.init_module();
 utils.init_module();
 language.init_module();
 config.init_module();
+error_handler.init_module();
 screen.init_module();
 singletons.init_module();
 
@@ -84,11 +86,15 @@ local function main_loop()
 		return;
 	end
 
-	customization_menu.status = "OK";
+	error_handler.report("game_timer", utils.table.tostring(game_handler.game));
 
+	error_handler.report("1", "1");
 	player_handler.update_position();
+	error_handler.report("2", "2");
 	enemy_handler.update_all_positions();
+	error_handler.report("3", "3");
 	enemy_handler.draw_enemies();
+	error_handler.report("4", "4");
 end
 
 -- #endregion

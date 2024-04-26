@@ -4,6 +4,7 @@ local singletons;
 local customization_menu;
 local time;
 local enemy_handler;
+local error_handler;
 
 local sdk = sdk;
 local tostring = tostring;
@@ -53,7 +54,7 @@ function this.update_is_cutscene()
 	local event_system_app = singletons.event_system_app;
 
 	if event_system_app == nil then
-		customization_menu.status = "[game_handler.update_is_cutscene] No Event System App";
+		error_handler.report("game_handler.update_is_cutscene", "No EventSystemApp");
         return;
     end
 
@@ -61,12 +62,12 @@ function this.update_is_cutscene()
 	local is_event_playing = is_running_event_method:call(event_system_app, false);
 
 	if is_player_event_playing == nil then
-		customization_menu.status = "[game_handler.update_is_cutscene] No Is Player Event Playing";
+		error_handler.report("game_handler.update_is_cutscene",  "No IsPlayerEventPlaying");
 		is_player_event_playing = false;
 	end
 
 	if is_event_playing == nil then
-		customization_menu.status = "[game_handler.update_is_cutscene] No Is Event Playing";
+		error_handler.report("game_handler.update_is_cutscene", "No IsEventPlaying");
 		is_event_playing = false;
 	end
 
@@ -75,8 +76,8 @@ function this.update_is_cutscene()
 	-- Cutscene
 	if is_cutscene_playing then
 		this.game.is_cutscene_playing = true;
-		time.remove_delay_timer(pause_off_timer);
-		pause_off_timer = nil;
+		time.remove_delay_timer(cutscene_off_timer);
+		cutscene_off_timer = nil;
 		return;
 	end
 
@@ -91,7 +92,6 @@ function this.update_is_cutscene()
 	if cutscene_off_timer ~= nil then
 		return;
 	end
-
 
 	-- Game No Cutscene, State Cutscene, Timer is Off
 	cutscene_off_timer = time.new_delay_timer(function()
@@ -112,7 +112,7 @@ end
 
 function this.on_pause(is_paused_int)
 	if is_paused_int == nil then
-		customization_menu.status = "[game_handler.on_pause] No Is Paused Int";
+		error_handler.report("game_handler.on_pause", "No IsPaused Int");
 		return;
 	end
 
@@ -151,6 +151,7 @@ function this.init_module()
 	customization_menu = require("Health_Bars.customization_menu");
 	time = require("Health_Bars.time");
 	enemy_handler = require("Health_Bars.enemy_handler");
+	error_handler = require("Health_Bars.error_handler");
 
 	sdk.hook(on_pause_method, function(args)
 

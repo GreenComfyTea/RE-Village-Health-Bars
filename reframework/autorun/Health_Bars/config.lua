@@ -1,5 +1,5 @@
 local this = {};
-local version = "1.1";
+local version = "1.2";
 
 local utils;
 local language;
@@ -84,7 +84,6 @@ function this.init()
 			},
 			
 			use_d2d_if_available = true,
-			add_enemy_height_to_world_offset_for_some_enemies = true,
 
 			render_during_cutscenes = false,
 			render_when_game_timer_is_paused = false,
@@ -201,6 +200,10 @@ function this.init()
 				background = 0x48000000,
 				outline = 0x68000000
 			}
+		},
+
+		debug = {
+			history_size = 64
 		}
 	};
 end

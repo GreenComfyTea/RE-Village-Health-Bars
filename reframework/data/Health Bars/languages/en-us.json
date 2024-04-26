@@ -1,6 +1,5 @@
 {
     "customization_menu": {
-        "add_enemy_height_to_world_offset_for_some_enemies": "Add Enemy Height to World Offset for Some Enemies",
         "apply": "Apply",
         "apply_time_duration_on_aim_target": "Apply Time Duration on Aim Target",
         "apply_time_duration_on_aiming": "Apply Time Duration on Aiming",
@@ -12,8 +11,11 @@
         "center": "Center",
         "color": "Color",
         "colors": "Colors",
+        "current_time": "Current Time",
         "current_value": "Current Value",
+        "debug": "Debug",
         "enabled": "Enabled",
+        "everything_seems_to_be_ok": "Everything seems to be OK!",
         "family": "Family",
         "fill_type": "Fill Type",
         "font_notice": "Any changes to the font require script reload!",
@@ -40,6 +42,8 @@
         "hide_pigs": "Hide Pigs",
         "hide_rose_copies": "Hide Rose Copies",
         "hide_rose_illusion": "Hide Rose Illusion",
+        "history": "History",
+        "history_size": "History Size",
         "include": "Include",
         "inside": "Inside",
         "italic": "Italic",
