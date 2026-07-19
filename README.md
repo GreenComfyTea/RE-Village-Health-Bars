@@ -157,8 +157,7 @@
 **Prerequisites:**
 
 - **[lua-amalg](https://github.com/siffiejoe/lua-amalg)**;
-- **[Lua 5.4+](https://lua.org/)**;
-- Correct `LUA_EXE` and `AMALG_LUA` paths configured in `reframework/autorun/compile.bat`.
+- **[Lua 5.4+](https://lua.org/)**.
 
 **Compilation:**
 

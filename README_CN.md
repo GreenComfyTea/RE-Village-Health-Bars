@@ -155,10 +155,8 @@
 
 **前置软件:**
 
-- [lua-amalg](https://github.com/siffiejoe/lua-amalg)
-- [Lua 5.4+](https://lua.org/)
-- 在 `reframework/autorun/compile.bat` 中配置正确的 `LUA_EXE` 和 `AMALG_LUA` 路径。  
-
+- [lua-amalg](https://github.com/siffiejoe/lua-amalg);
+- [Lua 5.4+](https://lua.org/).
 
 **编译步骤:**
 
