@@ -1,36 +1,6 @@
 local this = {};
 
-local sdk = sdk;
-local tostring = tostring;
-local pairs = pairs;
-local ipairs = ipairs;
-local tonumber = tonumber;
-local require = require;
-local pcall = pcall;
-local table = table;
-local string = string;
-local Vector3f = Vector3f;
-local d2d = d2d;
-local math = math;
-local json = json;
-local log = log;
-local fs = fs;
-local next = next;
-local type = type;
-local setmetatable = setmetatable;
-local getmetatable = getmetatable;
-local assert = assert;
-local select = select;
-local coroutine = coroutine;
-local utf8 = utf8;
-local re = re;
-local imgui = imgui;
-local draw = draw;
-local Vector2f = Vector2f;
-local reframework = reframework;
-local os = os;
-local ValueType = ValueType;
-local package = package;
+local modules = require("Health_Bars.modules");
 
 local table_tostring;
 local deep_copy;
@@ -51,6 +21,8 @@ this.vec4 = {};
 this.math = {};
 this.unicode = {};
 this.sdk = {};
+this.imgui = {};
+this.misc = {};
 
 this.constants = {};
 this.constants.uninitialized_int = -420;
@@ -266,7 +238,7 @@ end
 function this.vec2.random(distance)
 	distance = distance or 1;
 	local radians = math.random() * math.pi * 2;
-	return Vector2f.new(
+	return modules.reframework_globals.Vector2f.new(
 		distance * math.cos(radians),
 		distance * math.sin(radians)
 	);
@@ -281,8 +253,8 @@ function this.vec4.tostring(vector4f)
 end
 
 --- When called without arguments, returns a pseudo-random float with uniform distribution in the range [0,1). When called with two floats min and max, math.random returns a pseudo-random float with uniform distribution in the range [min, max). The call .random(max) is equivalent to .random(1, max)
----@param min number
----@param max number
+---@param min number?
+---@param max number?
 ---@return number
 function this.math.random(min, max)
 	if min == nil and max == nil then
@@ -290,7 +262,7 @@ function this.math.random(min, max)
 	end
 
 	if max == nil then
-		return max * math.random();
+		return 1 + (min - 1) * math.random();
 	end
 
 	return min + (max - min) * math.random();
@@ -424,9 +396,18 @@ function this.unicode.sub(str, i, j)
 
 	local c, b = select(2, iterator());
 
-	-- i and j are the same, single-charaacter sub
+	-- i and j are the same, single-character sub
 	if diff == 0 then
+		if c == nil or b == nil then
+	        return "";
+	    end
+		
 		return string.sub(str, b, b + c - 1);
+	end
+
+	-- guard against exhausted iterator when diff > 0
+	if b == nil then
+		return string.sub(str, i);
 	end
 
 	i = b;
@@ -437,6 +418,11 @@ function this.unicode.sub(str, i, j)
 	end
 
 	c, b = select(2, iterator());
+
+	-- guard against exhausted iterator
+	if c == nil or b == nil then
+		return string.sub(str, i);
+	end
 
 	return string.sub(str, i, b + c - 1);
 end
@@ -467,12 +453,67 @@ function this.sdk.generate_enum(type_def)
 end
 
 function this.sdk.generate_enum_by_typename(type_name)
-	local type_def = sdk.find_type_definition(type_name);
-	if not type_def then
-		return {};
-	end;
+    local type_def = modules.reframework_globals.sdk.find_type_definition(type_name);
+    if not type_def then
+        return {};
+    end;
 
-	return this.sdk.generate_enum(type_def);
+    return this.sdk.generate_enum(type_def);
+end
+
+
+function this.imgui.label(label, ...)
+    local id_string = "##" .. tostring(modules.language.mod_name_underscore);
+    local ids = { ... };
+	
+    if #ids == 0 then
+		local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		local random_id = "";
+		for _ = 1, 32 do
+			random_id = random_id .. chars:sub(math.random(1, #chars), 1);
+		end
+		id_string = id_string .. "." .. random_id;
+    else
+		for _, id in ipairs(ids) do
+			id_string = id_string .. "." .. tostring(id);
+		end
+	end
+	
+	return tostring(label) .. id_string;
+end
+
+function this.misc.scale_position(x, y)
+    local cached_config = modules.config.current_config;
+
+    local auto_scaled_x = x;
+    local auto_scaled_y = y;
+
+    if cached_config.global_modifiers.scale_position_modifier_with_resolution then
+        auto_scaled_x = x * modules.screen.auto_scale_modifier;
+        auto_scaled_y = y * modules.screen.auto_scale_modifier;
+    end
+
+    local scaled_x = auto_scaled_x * cached_config.global_modifiers.position_modifier;
+    local scaled_y = auto_scaled_y * cached_config.global_modifiers.position_modifier;
+
+    return scaled_x, scaled_y;
+end
+
+function this.misc.scale_size(width, height)
+	local cached_config = modules.config.current_config;
+
+	local auto_scaled_width = width;
+    local auto_scaled_height = height;
+
+    if cached_config.global_modifiers.scale_size_modifier_with_resolution then
+        auto_scaled_width = width * modules.screen.auto_scale_modifier;
+        auto_scaled_height = height * modules.screen.auto_scale_modifier;
+	end
+
+    local scaled_x = auto_scaled_width * cached_config.global_modifiers.size_modifier;
+    local scaled_y = auto_scaled_height * cached_config.global_modifiers.size_modifier;
+
+	return scaled_x, scaled_y;
 end
 
 function this.init_module()
